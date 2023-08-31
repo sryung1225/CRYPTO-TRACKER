@@ -25,7 +25,12 @@ function Coins() {
         <CoinsList>
           {coins.map((coin) => (
             <Coin key={coin.id}>
-              <Link to={`/:${coin.id}`}>
+              <Link
+                to={{
+                  pathname: `/${coin.id}`,
+                  state: { name: coin.name },
+                }}
+              >
                 <Img
                   src={`https://coinicons-api.vercel.app/api/icon/${coin.symbol.toLowerCase()}`}
                 />
@@ -79,6 +84,7 @@ const Coin = styled.li`
     display: flex;
     align-items: center;
     padding: 20px;
+    color: ${(props) => props.theme.bgColor};
     transition: color 0.2s ease-in;
   }
   &:hover a {
