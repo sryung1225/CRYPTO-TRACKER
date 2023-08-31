@@ -14,12 +14,14 @@ interface CoinInterface {
 
 function Coins() {
   const [coins, setCoins] = useState<CoinInterface[]>([]);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     (async () => {
       const json = await (
         await fetch("https://api.coinpaprika.com/v1/coins")
       ).json();
       setCoins(json.slice(0, 100));
+      setLoading(false);
     })();
   }, []);
   return (
@@ -27,19 +29,25 @@ function Coins() {
       <Header>
         <Title>코인</Title>
       </Header>
-      <CoinsList>
-        {coins.map((coin) => (
-          <Coin key={coin.id}>
-            <Link to={`/:${coin.id}`}>{coin.name} &rarr;</Link>
-          </Coin>
-        ))}
-      </CoinsList>
+      {loading ? (
+        <Loader>Loading...</Loader>
+      ) : (
+        <CoinsList>
+          {coins.map((coin) => (
+            <Coin key={coin.id}>
+              <Link to={`/:${coin.id}`}>{coin.name} &rarr;</Link>
+            </Coin>
+          ))}
+        </CoinsList>
+      )}
     </Container>
   );
 }
 
 const Container = styled.div`
   padding: 0px 20px;
+  max-width: 480px;
+  margin: 0 auto;
 `;
 
 const Header = styled.header`
@@ -47,6 +55,11 @@ const Header = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+`;
+
+const Loader = styled.span`
+  text-align: center;
+  display: block;
 `;
 
 const CoinsList = styled.ul``;
