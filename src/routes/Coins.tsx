@@ -69,7 +69,7 @@ const Img = styled.img`
 `;
 
 const Loader = styled.span`
-  direction: block;
+  display: block;
   text-align: center;
 `;
 
