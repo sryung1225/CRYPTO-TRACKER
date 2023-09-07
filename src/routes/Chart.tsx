@@ -1,9 +1,10 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
-import { theme } from "../theme";
+import { useTheme } from "styled-components";
 
 function Chart({ coinId }: IChartProps) {
+  const theme = useTheme();
   const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () =>
     fetchCoinHistory(coinId)
   );
@@ -33,7 +34,10 @@ function Chart({ coinId }: IChartProps) {
             colors: [theme.accentColor],
             fill: {
               type: "gradient",
-              gradient: { gradientToColors: ["white"], stops: [0, 100] },
+              gradient: {
+                gradientToColors: [theme.textColor],
+                stops: [0, 100],
+              },
             },
             stroke: {
               curve: "smooth",

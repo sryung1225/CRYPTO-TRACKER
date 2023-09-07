@@ -119,9 +119,10 @@ const Loader = styled.span`
 const Overview = styled.div`
   display: flex;
   justify-content: space-between;
-  background-color: rgba(0, 0, 0, 0.5);
   padding: 10px 20px;
+  background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
+  color: #f5f6fa;
 `;
 
 const OverviewItem = styled.div`
@@ -152,8 +153,7 @@ const Tab = styled.span<{ $isActive: boolean }>`
   background-color: rgba(0, 0, 0, 0.5);
   border-radius: 10px;
   font-size: 12px;
-  color: ${(props) =>
-    props.$isActive ? props.theme.accentColor : props.theme.textColor};
+  color: ${(props) => (props.$isActive ? props.theme.accentColor : "#f5f6fa")};
   font-weight: 400;
   text-align: center;
   text-transform: uppercase;
