@@ -7,6 +7,7 @@ import {
   Link,
 } from "react-router-dom";
 import { useQuery } from "react-query";
+import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Price from "./Price";
@@ -31,6 +32,11 @@ function Coin() {
   const loading = infoLoading || tickersLoading;
   return (
     <Container>
+      <Helmet>
+        <title>
+          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+        </title>
+      </Helmet>
       <Header>
         <Title>
           {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
