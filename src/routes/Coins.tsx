@@ -4,7 +4,7 @@ import { Helmet } from "react-helmet";
 import styled from "styled-components";
 import { fetchCoins } from "../api";
 
-function Coins() {
+function Coins({ toggleDark }: ICoinsProps) {
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
   return (
     <Container>
@@ -13,6 +13,7 @@ function Coins() {
       </Helmet>
       <Header>
         <Title>코인</Title>
+        <button onClick={toggleDark}>Toggle Dark Mode</button>
       </Header>
       {isLoading ? (
         <Loader>Loading...</Loader>
@@ -37,6 +38,10 @@ function Coins() {
       )}
     </Container>
   );
+}
+
+interface ICoinsProps {
+  toggleDark: () => void;
 }
 
 const Container = styled.div`
