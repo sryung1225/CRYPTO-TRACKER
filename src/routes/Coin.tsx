@@ -13,7 +13,7 @@ import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Price from "./Price";
 import Chart from "./Chart";
 
-function Coin() {
+function Coin({ isDark }: ICoinProps) {
   const { coinId } = useParams() as ICoinId;
   const { state } = useLocation() as IState;
   const priceMatch = useRouteMatch("/:coinId/price");
@@ -84,7 +84,7 @@ function Coin() {
               <Price />
             </Route>
             <Route path={`/${coinId}/chart`}>
-              <Chart coinId={coinId} />
+              <Chart coinId={coinId} isDark={isDark} />
             </Route>
           </Switch>
         </>
@@ -161,6 +161,10 @@ const Tab = styled.span<{ $isActive: boolean }>`
     display: block;
   }
 `;
+
+interface ICoinProps {
+  isDark: boolean;
+}
 
 interface ICoinId {
   coinId: string;
