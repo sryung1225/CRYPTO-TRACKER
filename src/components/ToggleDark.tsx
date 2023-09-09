@@ -8,7 +8,7 @@ function ToggleDark() {
   const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   return (
     <ToggleDarkBtn onClick={toggleDarkAtom}>
-      <ToggleDarkCircle toggle={isDark}></ToggleDarkCircle>
+      <ToggleDarkCircle $isDark={isDark}></ToggleDarkCircle>
       <ToggleDarkIcon>☀ ☪</ToggleDarkIcon>
     </ToggleDarkBtn>
   );
@@ -27,7 +27,7 @@ const ToggleDarkBtn = styled.button`
   transition: all 0.5s ease-in-out;
 `;
 
-const ToggleDarkCircle = styled.div<{ toggle: boolean }>`
+const ToggleDarkCircle = styled.div<{ $isDark: boolean }>`
   background-color: ${(props) => props.theme.bgColor};
   width: 30px;
   height: 30px;
@@ -36,7 +36,7 @@ const ToggleDarkCircle = styled.div<{ toggle: boolean }>`
   left: 5%;
   transition: all 0.5s ease-in-out;
   ${(props) =>
-    props.toggle &&
+    props.$isDark &&
     `
       transform: translate(40px, 0);
       transition: all 0.5s ease-in-out;
