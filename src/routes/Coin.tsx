@@ -12,6 +12,8 @@ import styled from "styled-components";
 import { fetchCoinInfo, fetchCoinTickers } from "../api";
 import Price from "./Price";
 import Chart from "./Chart";
+import ToggleDark from "../components/ToggleDark";
+import GoBack from "../components/GoBack";
 
 function Coin() {
   const { coinId } = useParams() as ICoinId;
@@ -38,10 +40,12 @@ function Coin() {
         </title>
       </Helmet>
       <Header>
-        <Title>
-          {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
-        </Title>
+        <GoBack />
+        <ToggleDark />
       </Header>
+      <Title>
+        {state?.name ? state.name : loading ? "Loading..." : infoData?.name}
+      </Title>
       {loading ? (
         <Loader>Loading...</Loader>
       ) : (
@@ -99,16 +103,19 @@ const Container = styled.div`
   max-width: 480px;
 `;
 
-const Header = styled.header`
+const Header = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  height: 15vh;
+  margin: 20px 0;
 `;
 
 const Title = styled.h1`
+  display: block;
+  margin: 30px auto;
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
+  text-align: center;
 `;
 
 const Loader = styled.span`

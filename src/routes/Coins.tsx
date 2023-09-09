@@ -2,23 +2,20 @@ import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import styled from "styled-components";
-import { useSetRecoilState } from "recoil";
 import { fetchCoins } from "../api";
-import { isDarkAtom } from "../atoms";
+import ToggleDark from "../components/ToggleDark";
 
 function Coins() {
-  const setDarkAtom = useSetRecoilState(isDarkAtom);
-  const toggleDarkAtom = () => setDarkAtom((prev) => !prev);
   const { isLoading, data } = useQuery<ICoin[]>(["allCoins"], fetchCoins);
   return (
     <Container>
       <Helmet>
-        <title>코인</title>
+        <title>CPYPTO-TRACKER</title>
       </Helmet>
       <Header>
-        <Title>코인</Title>
-        <button onClick={toggleDarkAtom}>Toggle Mode</button>
+        <ToggleDark />
       </Header>
+      <Title>CPYPTO-TRACKER</Title>
       {isLoading ? (
         <Loader>Loading...</Loader>
       ) : (
@@ -50,16 +47,19 @@ const Container = styled.div`
   max-width: 480px;
 `;
 
-const Header = styled.header`
+const Header = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: right;
   align-items: center;
-  height: 15vh;
+  margin: 20px 0;
 `;
 
 const Title = styled.h1`
+  display: block;
+  margin: 30px auto;
   font-size: 48px;
   color: ${(props) => props.theme.accentColor};
+  text-align: center;
 `;
 
 const Img = styled.img`
