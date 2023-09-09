@@ -127,9 +127,9 @@ const Overview = styled.div`
   display: flex;
   justify-content: space-between;
   padding: 10px 20px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.textColor};
   border-radius: 10px;
-  color: #f5f6fa;
+  color: ${(props) => props.theme.bgColor};
 `;
 
 const OverviewItem = styled.div`
@@ -157,11 +157,12 @@ const Tabs = styled.div`
 
 const Tab = styled.span<{ $isActive: boolean }>`
   padding: 7px 0px;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: ${(props) => props.theme.textColor};
   border-radius: 10px;
   font-size: 12px;
-  color: ${(props) => (props.$isActive ? props.theme.accentColor : "#f5f6fa")};
-  font-weight: 400;
+  color: ${(props) =>
+    props.$isActive ? props.theme.accentColor : props.theme.bgColor};
+  font-weight: 700;
   text-align: center;
   text-transform: uppercase;
   a {
