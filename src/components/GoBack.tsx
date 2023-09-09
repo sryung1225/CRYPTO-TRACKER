@@ -1,13 +1,11 @@
-import { useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 
 function GoBack() {
-  const history = useHistory();
-  const handleHistory = () => history.goBack();
-  return <Btn onClick={handleHistory}>ᐸ</Btn>;
+  return <LinkGoBack to={`/`}>ᐸ</LinkGoBack>;
 }
 
-const Btn = styled.button`
+const LinkGoBack = styled(Link)`
   display: inline-block;
   width: 40px;
   height: 40px;
