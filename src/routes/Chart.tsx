@@ -11,17 +11,21 @@ function Chart({ coinId }: IChartProps) {
   const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () =>
     fetchCoinHistory(coinId)
   );
+  const candlestickData =
+    data?.map((price) => ({
+      x: new Date(Number(price.time_close) * 1000).toISOString(),
+      y: [price.open, price.high, price.low, price.close],
+    })) || [];
   return (
     <div>
       {isLoading ? (
         "Loading chart..."
       ) : (
         <ApexChart
-          type="line"
+          type="candlestick"
           series={[
             {
-              name: "Price",
-              data: data?.map((price) => price.close) as number[],
+              data: candlestickData,
             },
           ]}
           options={{
