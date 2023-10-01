@@ -9,31 +9,34 @@ function ToggleDark() {
   return (
     <ToggleDarkBtn onClick={toggleDarkAtom}>
       <ToggleDarkCircle $isDark={isDark}></ToggleDarkCircle>
-      <ToggleDarkIcon>☀ ☪</ToggleDarkIcon>
+      <ToggleDarkIconWrap>
+        <ToggleDarkIcon>☀</ToggleDarkIcon>
+        <ToggleDarkIcon>☪</ToggleDarkIcon>
+      </ToggleDarkIconWrap>
     </ToggleDarkBtn>
   );
 }
 
 const ToggleDarkBtn = styled.button`
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
   width: 80px;
   height: 40px;
-  border-radius: 20px;
-  border: none;
   background-color: ${(props) => props.theme.textColor};
+  border: none;
+  border-radius: 20px;
   transition: all 0.5s ease-in-out;
 `;
 
 const ToggleDarkCircle = styled.div<{ $isDark: boolean }>`
-  background-color: ${(props) => props.theme.bgColor};
-  width: 30px;
-  height: 30px;
-  border-radius: 50px;
   position: absolute;
   left: 5%;
+  width: 30px;
+  height: 30px;
+  background-color: ${(props) => props.theme.bgColor};
+  border-radius: 50px;
   transition: all 0.5s ease-in-out;
   ${(props) =>
     props.$isDark &&
@@ -43,10 +46,16 @@ const ToggleDarkCircle = styled.div<{ $isDark: boolean }>`
     `}
 `;
 
+const ToggleDarkIconWrap = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+`;
+
 const ToggleDarkIcon = styled.span`
   display: block;
   line-height: 40px;
-  font-size: 30px;
+  font-size: 24px;
   color: ${(props) => props.theme.bgColor};
   text-align: center;
   transition: all 0.5s ease-in-out;
