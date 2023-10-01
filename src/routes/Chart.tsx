@@ -1,13 +1,11 @@
 import { useQuery } from "react-query";
 import { fetchCoinHistory } from "../api";
 import ApexChart from "react-apexcharts";
-import { useTheme } from "styled-components";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "../atoms";
 
 function Chart({ coinId }: IChartProps) {
   const isDark = useRecoilValue(isDarkAtom);
-  const theme = useTheme();
   const { isLoading, data } = useQuery<IHistorical[]>(["ohlcv", coinId], () =>
     fetchCoinHistory(coinId)
   );
@@ -38,17 +36,13 @@ function Chart({ coinId }: IChartProps) {
               toolbar: { show: false },
               background: "transparent",
             },
-            colors: [theme.accentColor],
-            fill: {
-              type: "gradient",
-              gradient: {
-                gradientToColors: [theme.textColor],
-                stops: [0, 100],
+            plotOptions: {
+              candlestick: {
+                colors: {
+                  upward: "#6896f9",
+                  downward: "#f96868",
+                },
               },
-            },
-            stroke: {
-              curve: "smooth",
-              width: 4,
             },
             grid: { show: false },
             xaxis: {
@@ -56,16 +50,8 @@ function Chart({ coinId }: IChartProps) {
               axisTicks: { show: false },
               labels: { show: true, rotate: 0 },
               type: "datetime",
-              categories: data?.map((price) =>
-                new Date(Number(price.time_close) * 1000).toUTCString()
-              ),
             },
             yaxis: { show: false },
-            tooltip: {
-              y: {
-                formatter: (value) => `$${value.toFixed(4)}`,
-              },
-            },
           }}
         />
       )}
