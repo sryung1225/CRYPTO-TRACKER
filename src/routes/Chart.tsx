@@ -15,7 +15,7 @@ function Chart({ coinId }: IChartProps) {
       y: [price.open, price.high, price.low, price.close],
     })) || [];
   return (
-    <div>
+    <>
       {isLoading ? (
         "Loading chart..."
       ) : (
@@ -55,7 +55,7 @@ function Chart({ coinId }: IChartProps) {
           }}
         />
       )}
-    </div>
+    </>
   );
 }
 
