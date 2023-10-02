@@ -89,9 +89,9 @@ const Rate = styled.p<{ $percentChange: number }>`
     props.$percentChange !== undefined &&
     css`
       color: ${props.$percentChange > 0
-        ? "#6896f9"
-        : props.$percentChange < 0
         ? "#f96868"
+        : props.$percentChange < 0
+        ? "#6896f9"
         : props.theme.bgColor};
     `}
 `;

@@ -39,8 +39,8 @@ function Chart({ coinId }: IChartProps) {
             plotOptions: {
               candlestick: {
                 colors: {
-                  upward: "#6896f9",
-                  downward: "#f96868",
+                  upward: "#f96868",
+                  downward: "#6896f9",
                 },
               },
             },
