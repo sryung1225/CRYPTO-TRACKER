@@ -10,7 +10,7 @@ ReactJS와 TypeScript를 이용해 초안을 만들고, Recoil과 React-Query를
 
 ![crypto](./assets/all-in-one.gif) <br>
 
-🚩 권장 사용 환경: Window10, Chrome <br>
+🚩 권장 사용 환경: Window10, MacOS Ventura, Chrome <br>
 
 🚩 사용 기술: <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/> <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white"/> <img src="https://img.shields.io/badge/React%20Query-FF4154.svg?style&logo=React-Query&logoColor=white"/> <img src="https://img.shields.io/badge/React%20Router-CA4245.svg?style&logo=React-Router&logoColor=white"> <img src="https://img.shields.io/badge/Recoil-3578E5?style=flat-square&logo=recoil&logoColor=white"/> <img src="https://img.shields.io/badge/Styled_Components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/> <br>
 (react-router-dom 은 최신 6버전이 아닌 5버전을 사용했습니다.) <br>
