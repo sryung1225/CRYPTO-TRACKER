@@ -1,7 +1,6 @@
 import Router from "./Router";
 import { darkTheme, lightTheme } from "./theme";
 import { createGlobalStyle, ThemeProvider } from "styled-components";
-import { ReactQueryDevtools } from "react-query/devtools";
 import { useRecoilValue } from "recoil";
 import { isDarkAtom } from "./atoms";
 import { Helmet } from "react-helmet";
@@ -64,7 +63,6 @@ function App() {
       </Helmet>
       <GlobalStyle />
       <Router />
-      <ReactQueryDevtools initialIsOpen={true} />
     </ThemeProvider>
   );
 }
